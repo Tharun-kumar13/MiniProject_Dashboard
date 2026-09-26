@@ -12,11 +12,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.ExcdelSheetData.Entity.*;
+import com.example.ExcdelSheetData.Service.*;
+
 
 import com.example.ExcdelSheetData.Repository.*;
 
 @Service
-public class CustomerServiceImp {
+public class CustomerServiceImp implements CustomerService{
 
     @Autowired
     private CustomerRepo customerRepo;
@@ -36,7 +38,20 @@ public class CustomerServiceImp {
                         customer.setEmployeeName(row.getCell(1).getStringCellValue());
                         customer.setProjectCode(row.getCell(2).getStringCellValue());
                         customer.setProjectName(row.getCell(3).getStringCellValue());
-
+                        customer.setAllocation(row.getCell(7).getNumericCellValue());
+                        customer.setCustomerCode(row.getCell(11).getNumericCellValue());
+                        customer.setCustomerName(row.getCell(12).getStringCellValue());
+                        customer.setProjectDUName(row.getCell(20).getStringCellValue());
+                        customer.setProjectManagerName(row.getCell(22).getStringCellValue());
+                        customer.setProjectCategory(row.getCell(26).getStringCellValue());
+                        customer.setProjectCategoryName(row.getCell(27).getStringCellValue());
+                        customer.setWbsType(row.getCell(28).getStringCellValue());
+                        customer.setBillingStatus(row.getCell(34).getStringCellValue());
+                        customer.setEmployeeLobName(row.getCell(38).getStringCellValue());
+                        customer.setBand(row.getCell(43).getStringCellValue());
+                        customer.setSubBand(row.getCell(44).getStringCellValue());
+                       customer.setJoiningDate(row.getCell(49).getStringCellValue());
+                        customer.setPsa(row.getCell(50).getStringCellValue());
                         customerData.add(customer);
                     }
                 });
